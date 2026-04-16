@@ -1,16 +1,13 @@
-
 import { FaHome, FaShoppingCart, FaUsers, FaPlus } from "react-icons/fa";
 
 export default function Sidebar() {
-    return (
-        <div className="w-64 bg-white p-6 flex flex-col justify-between min-h-screen border-r">
-
-            {/* Logo */}
-            <div>
-                
-<h1 className="text-4xl font-bold font-[Poppins] mb-1">
-    Sedap<span className="text-green-500">.</span>
-</h1>
+  return (
+    <div className="w-64 bg-white p-6 flex flex-col justify-between min-h-screen border-r">
+      {/* Logo */}
+      <div>
+        <h1 className="text-4xl font-bold font-[Poppins] mb-1">
+          Sedap<span className="text-green-500">.</span>
+        </h1>
         <p className="text-gray-400 text-sm mb-8">Modern Admin Dashboard</p>
 
         {/* Menu */}
@@ -34,7 +31,6 @@ export default function Sidebar() {
 
       {/* Footer */}
       <div>
-        
         <div className="bg-green-500 rounded-xl p-4 mt-3 text-white">
           {/* 🔥 PINDAH TEKS KE DALAM CARD */}
           <p className="text-sm mb-3">

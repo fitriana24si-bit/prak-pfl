@@ -32,7 +32,7 @@ export default function Header() {
 
                 {/* PROFILE FIX */}
                 <div className="flex items-center gap-2">
-                    <span>Hello, <b>Fikri Muhaffizh</b></span>
+                    <span>Hello, <b>Fitriana Tasya</b></span>
 
                     <img
                         src="https://i.pravatar.cc/40"
