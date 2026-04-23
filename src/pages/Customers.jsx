@@ -6,7 +6,7 @@ export default function Customers() {
 
     return(
         <div id="dashboard-container">
-            <PageHeader/>
+            <PageHeader title = "Customers"/>
             <p>Ini halaman customer</p>
         </div>
     );

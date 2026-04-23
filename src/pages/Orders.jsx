@@ -6,7 +6,7 @@ export default function Orders() {
 
     return(
         <div id="dashboard-container">
-            <PageHeader/>
+            <PageHeader title = "Orders"/>
             <p>Ini halaman ordeer</p>
         </div>
     );
