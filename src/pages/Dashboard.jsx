@@ -21,7 +21,7 @@ export default function Dashboard() {
             {/* TITLE */}
             <div className="flex justify-between items-center mb-6">
                 <div>
-                    <h2 className="text-xl font-bold">Dashboard</h2>
+                    <h3 className="font-semibold text-lg">Dashboard</h3>
                     <p className="text-gray-400 text-sm">
                         Home / Home Detail / Home Very Detail
                     </p>
@@ -43,7 +43,7 @@ export default function Dashboard() {
                         <FaShoppingCart className="text-green-500 text-xl" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-lg">75</h3>
+                      <h3 className="font-semibold text-lg">75</h3>
                         <p className="text-gray-400 text-sm">Total Orders</p>
                     </div>
                 </div>
@@ -56,7 +56,7 @@ export default function Dashboard() {
                         <FaTruck className="text-blue-500 text-xl" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-lg">175</h3>
+                        <h3 className="font-semibold text-lg">75</h3>
                         <p className="text-gray-400 text-sm">Total Delivered</p>
                     </div>
                 </div>
@@ -69,7 +69,7 @@ export default function Dashboard() {
                         <FaBan className="text-red-500 text-xl" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-lg">40</h3>
+                        <h3 className="font-semibold text-lg">75</h3>
                         <p className="text-gray-400 text-sm">Total Canceled</p>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ export default function Dashboard() {
                         <FaDollarSign className="text-yellow-500 text-xl" />
                     </div>
                     <div>
-                        <h3 className="font-bold text-lg">Rp.128</h3>
+                        <h3 className="font-semibold text-lg">Rp.128</h3>
                         <p className="text-gray-400 text-sm">Total Revenue</p>
                     </div>
                 </div>

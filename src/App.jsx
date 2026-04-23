@@ -1,6 +1,4 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
 import "./assets/tailwind.css";
 import Sidebar from "./layouts/Sidebar";
 import Header from "./layouts/Header";
@@ -11,21 +9,55 @@ import Orders from "./pages/Orders";
 import NotFound from "./pages/NotFound";
 
 function App() {
-  const [count, setCount] = useState(0);
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
-      <Sidebar />
+    <div className="font-poppins">
+      
+      <div className="flex min-h-screen bg-gray-100">
+        <Sidebar />
 
-      <div className="flex-1 p-6">
-        <Header />
-        <Routes>
-           <Route path="*" element={<NotFound />} />
-          <Route path="/" element={<Dashboard />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/customers" element={<Customers />} />
-        </Routes>
+        <div className="flex-1 p-6">
+          <Header />
+
+          <Routes>
+
+            {/* 🔥 HALAMAN UTAMA */}
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/orders" element={<Orders />} />
+            <Route path="/customers" element={<Customers />} />
+
+            {/* 🔥 ERROR PAGES */}
+            <Route path="/error-400" element={
+              <NotFound
+                code="400"
+                title="Bad Request"
+                description="Permintaan yang kamu kirim tidak valid."
+              />
+            } />
+
+            <Route path="/error-401" element={
+              <NotFound
+                code="401"
+                title="Unauthorized"
+                description="Kamu harus login untuk mengakses halaman ini."
+              />
+            } />
+
+            <Route path="/error-403" element={
+              <NotFound
+                code="403"
+                title="Forbidden"
+                description="Kamu tidak memiliki izin untuk mengakses halaman ini."
+              />
+            } />
+
+            {/* 🔥 DEFAULT 404 */}
+            <Route path="*" element={<NotFound />} />
+
+          </Routes>
+        </div>
       </div>
+
     </div>
   );
 }

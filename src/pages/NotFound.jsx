@@ -1,70 +1,122 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Jika kamu menggunakan React Router
+import { useNavigate } from 'react-router-dom';
 
-export default function NotFound() {
+export default function NotFound({
+    code = "404",
+    title = "Halaman Tidak Ditemukan",
+    description = "Halaman yang kamu cari mungkin sudah dipindahkan atau tidak tersedia.",
+    image
+}) {
     const navigate = useNavigate();
 
-    const styles = {
-        container: {
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            height: '80vh',
-            textAlign: 'center',
-            fontFamily: "'Poppins', sans-serif", // Menyesuaikan style dashboard
-            color: '#333'
-        },
-        errorCode: {
-            fontSize: '120px',
-            fontWeight: '800',
-            margin: '0',
-            color: '#00B074', // Hijau yang senada dengan tombol 'Add Order'
-            lineHeight: '1'
-        },
-        title: {
-            fontSize: '24px',
-            fontWeight: '600',
-            marginBottom: '10px'
-        },
-        description: {
-            color: '#777',
-            marginBottom: '30px',
-            maxWidth: '400px'
-        },
-        button: {
-            backgroundColor: '#00B074', // Match dengan branding Sedap
-            color: 'white',
-            border: 'none',
-            padding: '12px 25px',
-            borderRadius: '8px',
-            fontSize: '16px',
-            fontWeight: '600',
-            cursor: 'pointer',
-            transition: '0.3s',
-            boxShadow: '0px 4px 10px rgba(0, 176, 116, 0.2)'
-        }
-    };
-
     return (
-        <div id="dashboard-container" style={{ padding: '20px' }}>
-            {/* Tetap menggunakan header agar user tetap merasa di dalam aplikasi */}
+        <div style={styles.wrapper}>
+            
+            <div style={styles.bgCircle}></div>
+
             <div style={styles.container}>
-                <h1 style={styles.errorCode}>404</h1>
-                <h2 style={styles.title}>Waduh! Halaman Tidak Ditemukan</h2>
+                
+                <h1 style={styles.errorCode}>{code}</h1>
+
+                <h2 style={styles.title}>
+                    {title}
+                </h2>
+
                 <p style={styles.description}>
-                    Sepertinya halaman yang kamu cari sudah dipindah atau memang tidak pernah ada. 
-                    Yuk, balik ke dashboard utama!
+                    {description}
                 </p>
-                <button 
-                    style={styles.button}
-                    onClick={() => navigate('/')}
-                    onMouseOver={(e) => e.target.style.opacity = '0.9'}
-                    onMouseOut={(e) => e.target.style.opacity = '1'}
-                >
-                    Kembali ke Dashboard
-                </button>
+
+                {image && (
+                    <img 
+                        src={image} 
+                        alt="error" 
+                        style={{ width: "200px", marginBottom: "20px" }}
+                    />
+                )}
+
+                <div style={styles.buttonGroup}>
+                    <button 
+                        style={styles.primaryBtn}
+                        onClick={() => navigate('/')}
+                    >
+                        Kembali ke Dashboard
+                    </button>
+
+                    <button 
+                        style={styles.secondaryBtn}
+                        onClick={() => navigate(-1)}
+                    >
+                        Kembali
+                    </button>
+                </div>
             </div>
         </div>
     );
 }
+
+const styles = {
+    wrapper: {
+        position: 'relative',
+        height: '100vh',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontFamily: "'Poppins', sans-serif",
+        background: '#f9fafb',
+        overflow: 'hidden'
+    },
+    bgCircle: {
+        position: 'absolute',
+        width: '400px',
+        height: '400px',
+        background: '#00B074',
+        borderRadius: '50%',
+        filter: 'blur(150px)',
+        opacity: '0.2'
+    },
+    container: {
+        textAlign: 'center',
+        zIndex: 2
+    },
+    errorCode: {
+        fontSize: '120px',
+        fontWeight: '800',
+        margin: 0,
+        color: '#00B074',
+        letterSpacing: '5px'
+    },
+    title: {
+        fontSize: '26px',
+        fontWeight: '600',
+        marginTop: '10px'
+    },
+    description: {
+        color: '#777',
+        margin: '15px auto 30px',
+        maxWidth: '400px',
+        lineHeight: '1.6'
+    },
+    buttonGroup: {
+        display: 'flex',
+        gap: '15px',
+        justifyContent: 'center'
+    },
+    primaryBtn: {
+        backgroundColor: '#00B074',
+        color: '#fff',
+        border: 'none',
+        padding: '12px 22px',
+        borderRadius: '8px',
+        fontWeight: '600',
+        cursor: 'pointer'
+    },
+    secondaryBtn: {
+        backgroundColor: 'transparent',
+        border: '2px solid #00B074',
+        color: '#00B074',
+        padding: '12px 22px',
+        borderRadius: '8px',
+        fontWeight: '600',
+        cursor: 'pointer'
+    }
+};

@@ -5,16 +5,12 @@ import { useState } from "react";
 
 export default function Header() {
 
-    
     const [openSearch, setOpenSearch] = useState(false);
-
-    
     const [keyword, setKeyword] = useState("");
 
     return (
         <div className="flex justify-between items-center mb-6">
 
-            {/* SEARCH (CLICK TO OPEN MODAL) */}
             <div
                 className="relative w-80 cursor-pointer"
                 onClick={() => setOpenSearch(true)}
@@ -28,7 +24,6 @@ export default function Header() {
                 />
             </div>
 
-            {/* RIGHT MENU */}
             <div className="flex items-center gap-6">
 
                 <div className="relative">
@@ -42,29 +37,25 @@ export default function Header() {
                 <SlSettings className="text-xl text-gray-600" />
 
                 <div className="flex items-center gap-2">
-                    <span>Hello, <b>Fitriana Tasya</b></span>
+                    <span className="text-sm">Hello, <b>Fitriana Tasya</b></span>
                     <img
-                         src="/img/puu.png"
+                        src="/img/puu.png"
                         className="w-10 h-10 rounded-full"
                         alt="profile"
                     />
                 </div>
-
             </div>
 
-            {/* 🔥 MODAL SEARCH (IMPROVISASI UTAMA) */}
             {openSearch && (
                 <div
                     className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center z-50"
                     onClick={() => setOpenSearch(false)}
                 >
-
                     <div
                         className="bg-white p-6 rounded-2xl w-96 shadow-xl"
                         onClick={(e) => e.stopPropagation()}
                     >
-
-                        <h2 className="text-lg font-bold mb-3">
+                        <h2 className="text-lg font-semibold mb-3">
                             🔍 Search Menu
                         </h2>
 
@@ -82,17 +73,6 @@ export default function Header() {
                             </div>
                         )}
 
-                        <div className="mt-4">
-                            <p className="text-xs text-gray-400 mb-1">
-                                Recent Search
-                            </p>
-                            <ul className="text-sm space-y-1">
-                                <li>🍔 Burger</li>
-                                <li>🍕 Pizza</li>
-                                <li>🥤 Drink</li>
-                            </ul>
-                        </div>
-
                         <button
                             className="mt-4 w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition"
                             onClick={() => setOpenSearch(false)}
@@ -100,7 +80,6 @@ export default function Header() {
                             Close
                         </button>
                     </div>
-
                 </div>
             )}
 
