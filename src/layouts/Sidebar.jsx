@@ -1,4 +1,4 @@
-import { FaHome, FaShoppingCart, FaUsers, FaPlus } from "react-icons/fa";
+import { FaHome, FaShoppingCart, FaUsers, FaExclamationTriangle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
@@ -14,7 +14,9 @@ export default function Sidebar() {
         <div className="w-64 bg-white p-6 flex flex-col justify-between min-h-screen border-r">
 
             <div>
-                <h1 className="text-4xl font-bold mb-1">
+
+                {/* LOGO */}
+                <h1 className="text-3xl font-bold mb-1">
                     Sedap<span className="text-green-500">.</span>
                 </h1>
 
@@ -22,76 +24,53 @@ export default function Sidebar() {
                     Modern Admin Dashboard
                 </p>
 
-                <ul className="space-y-4">
+                {/* MENU */}
+                <ul className="space-y-3">
 
-                    {/* MENU UTAMA */}
                     <NavLink to="/" className={menuClass}>
-                        <FaHome />
-                        <span>Dashboard</span>
+                        <FaHome /> Dashboard
                     </NavLink>
 
                     <NavLink to="/orders" className={menuClass}>
-                        <FaShoppingCart />
-                        <span>Orders</span>
+                        <FaShoppingCart /> Orders
                     </NavLink>
 
                     <NavLink to="/customers" className={menuClass}>
-                        <FaUsers />
-                        <span>Customers</span>
+                        <FaUsers /> Customers
                     </NavLink>
 
                 </ul>
 
-                {/* 🔥 ERROR MENU */}
-                <p className="text-gray-400 text-xs mt-6 mb-2">Errors</p>
+                {/* ERROR MENU */}
+                <p className="text-gray-400 text-xs mt-6 mb-2">
+                    Error Pages
+                </p>
 
                 <ul className="space-y-2">
 
                     <NavLink to="/error-400" className={menuClass}>
-                        <span>⚠️</span>
-                        <span>Error 400</span>
+                        <FaExclamationTriangle className="text-yellow-500" />
+                        Error 400
                     </NavLink>
 
                     <NavLink to="/error-401" className={menuClass}>
-                        <span>🔐</span>
-                        <span>Error 401</span>
+                        <FaExclamationTriangle className="text-orange-500" />
+                        Error 401
                     </NavLink>
 
                     <NavLink to="/error-403" className={menuClass}>
-                        <span>⛔</span>
-                        <span>Error 403</span>
+                        <FaExclamationTriangle className="text-red-500" />
+                        Error 403
                     </NavLink>
 
                 </ul>
+
             </div>
 
-            <div>
-                <div className="bg-green-500 rounded-xl p-4 mt-3 text-white">
-                    <p className="text-sm mb-3 leading-6">
-                        Please organize your menus through button below!
-                    </p>
-
-                    <div className="flex items-center justify-between">
-                        <button className="bg-white text-green-600 px-4 py-2 rounded-md flex items-center gap-2 font-semibold">
-                            <FaPlus />
-                            Add Menus
-                        </button>
-
-                        <img
-                            src="/img/puu.png"
-                            className="w-10 h-10 rounded-full border-2 border-white"
-                            alt="icon"
-                        />
-                    </div>
-                </div>
-
-                <p className="text-xs text-gray-400 mt-6">
-                    Sedap Restaurant Admin Dashboard
-                </p>
-                <p className="text-xs text-gray-400">
-                    © 2025 All Right Reserved
-                </p>
+            <div className="text-xs text-gray-400">
+                © 2025 Sedap Dashboard
             </div>
+
         </div>
     );
 }
