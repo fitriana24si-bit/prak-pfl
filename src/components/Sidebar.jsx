@@ -1,6 +1,7 @@
 import { FaHome, FaShoppingCart, FaUsers, FaExclamationTriangle } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 
+
 export default function Sidebar() {
 
     const menuClass = ({ isActive }) =>

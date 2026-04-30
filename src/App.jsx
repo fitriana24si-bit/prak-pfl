@@ -1,83 +1,89 @@
 import "./assets/tailwind.css";
-import Sidebar from "./layouts/Sidebar";
-import Header from "./layouts/Header";
-import Dashboard from "./pages/Dashboard";
-import Customers from "./pages/Customers";
-import Orders from "./pages/Orders";
-import NotFound from "./pages/NotFound";
 import { Route, Routes } from "react-router-dom";
+import React, { Suspense } from "react";
+import AuthLayout from "./layouts/AuthLayout";
+import Loading from "./components/Loading";
+
+// 🔥 Lazy pages
+const Dashboard = React.lazy(() => import("./pages/Dashboard"));
+const Customers = React.lazy(() => import("./pages/Customers"));
+const Orders = React.lazy(() => import("./pages/Orders"));
+const NotFound = React.lazy(() => import("./pages/NotFound"));
+
+const Login = React.lazy(() => import("./pages/auth/Login"));
+const Register = React.lazy(() => import("./pages/auth/Register"));
+const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
+
+const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 
 function App() {
   return (
-    <div className="font-poppins">
-      <div className="flex min-h-screen bg-gray-100">
+    <Suspense fallback={<Loading />}> 
+      
+      <Routes>
 
-        <Sidebar />
+        {/* Layout utama */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/customers" element={<Customers />} />
+        </Route>
 
-        <div className="flex-1 p-6">
-          <Header />
-
-          <Routes>
-
-            {/* MAIN */}
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/customers" element={<Customers />} />
-
-            {/* ERROR 400 */}
-            <Route
-              path="/error-400"
-              element={
-                <NotFound
-                  code="400"
-                  title="Bad Request"
-                  description="Permintaan tidak valid atau format salah."
-                />
-              }
+        {/* Error pages */}
+        <Route
+          path="/error-400"
+          element={
+            <NotFound
+              code="400"
+              title="Bad Request"
+              description="Permintaan tidak valid atau format salah."
             />
+          }
+        />
 
-            {/* ERROR 401 */}
-            <Route
-              path="/error-401"
-              element={
-                <NotFound
-                  code="401"
-                  title="Unauthorized"
-                  description="Kamu harus login untuk mengakses halaman ini."
-                />
-              }
+        <Route
+          path="/error-401"
+          element={
+            <NotFound
+              code="401"
+              title="Unauthorized"
+              description="Kamu harus login untuk mengakses halaman ini."
             />
+          }
+        />
 
-            {/* ERROR 403 */}
-            <Route
-              path="/error-403"
-              element={
-                <NotFound
-                  code="403"
-                  title="Forbidden"
-                  description="Kamu tidak memiliki izin untuk mengakses halaman ini."
-                />
-              }
+        <Route
+          path="/error-403"
+          element={
+            <NotFound
+              code="403"
+              title="Forbidden"
+              description="Kamu tidak memiliki izin untuk mengakses halaman ini."
             />
+          }
+        />
 
-            {/* DEFAULT 404 */}
-            <Route
-              path="*"
-              element={
-                <NotFound
-                  code="404"
-                  title="Page Not Found"
-                  description="Halaman yang kamu cari tidak tersedia."
-                />
-              }
+        {/* 404 */}
+        <Route
+          path="*"
+          element={
+            <NotFound
+              code="404"
+              title="Page Not Found"
+              description="Halaman tidak ditemukan."
             />
+          }
+        />
 
-          </Routes>
+        {/* AUTH */}
+        <Route element={<AuthLayout />}>
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/forgot" element={<Forgot />} />
+        </Route>
 
-        </div>
-
-      </div>
-    </div>
+      </Routes>
+   </Suspense>
   );
 }
 
