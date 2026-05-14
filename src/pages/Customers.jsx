@@ -1,4 +1,8 @@
 import { useState } from "react";
+
+// 🔥 TAMBAHAN: Import Link
+import { Link } from "react-router-dom";
+
 import PageHeader from "../components/PageHeader";
 import customersData from "../data/customers";
 
@@ -37,8 +41,19 @@ export default function Customers() {
                     <tbody>
                         {customersData.map((c) => (
                             <tr key={c.id} className="border-b">
+                                
                                 <td>{c.id}</td>
-                                <td>{c.name}</td>
+
+                                {/* 🔥 TAMBAHAN: Dynamic Route Link */}
+                                <td>
+                                    <Link
+                                        to={`/customers/${c.id}`}
+                                        className="text-blue-500 hover:underline"
+                                    >
+                                        {c.name}
+                                    </Link>
+                                </td>
+
                                 <td>{c.email}</td>
                                 <td>{c.phone}</td>
                                 <td>{c.loyalty}</td>

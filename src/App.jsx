@@ -10,6 +10,15 @@ const Customers = React.lazy(() => import("./pages/Customers"));
 const Orders = React.lazy(() => import("./pages/Orders"));
 const NotFound = React.lazy(() => import("./pages/NotFound"));
 
+// 🔥 TAMBAHAN: Products Page
+const Products = React.lazy(() => import("./pages/Products"));
+
+// 🔥 TAMBAHAN: Product Detail
+const ProductDetail = React.lazy(() => import("./pages/ProductDetail"));
+
+// 🔥 TAMBAHAN: Customer Detail
+const CustomerDetail = React.lazy(() => import("./pages/CustomerDetail"));
+
 const Login = React.lazy(() => import("./pages/auth/Login"));
 const Register = React.lazy(() => import("./pages/auth/Register"));
 const Forgot = React.lazy(() => import("./pages/auth/Forgot"));
@@ -18,15 +27,28 @@ const MainLayout = React.lazy(() => import("./layouts/MainLayout"));
 
 function App() {
   return (
-    <Suspense fallback={<Loading />}> 
+    <Suspense fallback={<Loading />}>
       
       <Routes>
 
         {/* Layout utama */}
         <Route element={<MainLayout />}>
+
           <Route path="/" element={<Dashboard />} />
+
           <Route path="/orders" element={<Orders />} />
+
           <Route path="/customers" element={<Customers />} />
+
+          {/* 🔥 TAMBAHAN: Dynamic Route Customer */}
+          <Route path="/customers/:id" element={<CustomerDetail />} />
+
+          {/* 🔥 TAMBAHAN: Products */}
+          <Route path="/products" element={<Products />} />
+
+          {/* 🔥 TAMBAHAN: Dynamic Route Product */}
+          <Route path="/products/:id" element={<ProductDetail />} />
+
         </Route>
 
         {/* Error pages */}

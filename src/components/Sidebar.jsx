@@ -1,4 +1,6 @@
-import { FaHome, FaShoppingCart, FaUsers, FaExclamationTriangle } from "react-icons/fa";
+// 🔥 TAMBAHAN: FaBox
+import { FaHome, FaShoppingCart, FaUsers, FaExclamationTriangle, FaBox } from "react-icons/fa";
+
 import { NavLink } from "react-router-dom";
 
 
@@ -38,6 +40,11 @@ export default function Sidebar() {
 
                     <NavLink to="/customers" className={menuClass}>
                         <FaUsers /> Customers
+                    </NavLink>
+
+                    {/* 🔥 TAMBAHAN: Products Menu */}
+                    <NavLink to="/products" className={menuClass}>
+                        <FaBox /> Products
                     </NavLink>
 
                 </ul>
