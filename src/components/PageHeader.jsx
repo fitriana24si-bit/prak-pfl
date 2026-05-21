@@ -1,3 +1,5 @@
+import Button from "./Button";
+
 export default function PageHeader({ title, breadcrumb, children }) {
 
     // 🔥 TAMBAHAN: handle breadcrumb (string / array)
@@ -30,9 +32,10 @@ export default function PageHeader({ title, breadcrumb, children }) {
                 {children ? (
                     children
                 ) : (
-                    <button className="bg-green-500 text-white px-4 py-2 rounded">
+                    <Button type="primary" >
+                        
                         Add Order
-                    </button>
+                    </Button>
                 )}
             </div>
 

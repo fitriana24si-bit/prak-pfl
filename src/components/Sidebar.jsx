@@ -47,6 +47,10 @@ export default function Sidebar() {
                         <FaBox /> Products
                     </NavLink>
 
+                    <NavLink to="/components" className={menuClass}>
+                        <FaBox /> Components
+                    </NavLink>
+
                 </ul>
 
                 {/* ERROR MENU */}

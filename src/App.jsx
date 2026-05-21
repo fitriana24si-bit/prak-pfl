@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import React, { Suspense } from "react";
 import AuthLayout from "./layouts/AuthLayout";
 import Loading from "./components/Loading";
+import Components from "./pages/Components";
 
 // 🔥 Lazy pages
 const Dashboard = React.lazy(() => import("./pages/Dashboard"));
@@ -48,6 +49,8 @@ function App() {
 
           {/* 🔥 TAMBAHAN: Dynamic Route Product */}
           <Route path="/products/:id" element={<ProductDetail />} />
+
+          <Route path="/components" element={<Components />} />
 
         </Route>
 
